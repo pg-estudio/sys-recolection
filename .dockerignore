@@ -1,0 +1,16 @@
+# Ignore common development files and directories
+nginx
+.git
+.gitignore
+temp/
+logs/
+node_modules
+
+# Ignore Docker-specific files that shouldn't be copied into the image
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Ignore specific file types
+*.log
+*.tmp
