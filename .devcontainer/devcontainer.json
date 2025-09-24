@@ -1,0 +1,17 @@
+{
+    "name": "Laravel sys-recolection",
+    "dockerComposeFile": "../docker/docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/var/www/html/sys-recolection",
+    "remoteUser": "devuser",
+    "overrideCommand": true,
+    "postCreateCommand": "composer install && npm install",
+    "remoteEnv": {
+        "HOME": "/home/devuser"
+    },
+    "runServices": [
+        "app",
+        "db",
+        "web"
+    ]
+}
