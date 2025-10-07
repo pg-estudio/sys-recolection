@@ -23,7 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'telefono',
+        'direccion'
     ];
 
     /**
@@ -46,7 +48,40 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => 'string',
         ];
+    }
+
+    /**
+     * Get the solicitudes for the user.
+     */
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class);
+    }
+
+    /**
+     * Get the puntos for the user.
+     */
+    public function puntos()
+    {
+        return $this->hasOne(Punto::class);
+    }
+
+    /**
+     * Get the canjes for the user.
+     */
+    public function canjes()
+    {
+        return $this->hasMany(Canje::class);
+    }
+
+    /**
+     * Get the notificaciones for the user.
+     */
+    public function notificaciones()
+    {
+        return $this->hasMany(Notificacion::class);
     }
 
     /**
