@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +24,12 @@ class Solicitud extends Model
         'user_id',
         'tipo_residuo_id',
         'ruta_id',
+        'descripcion',
+        'direccion',
+        'peso_aproximado',
+        'fecha_preferida',
+        'telefono_contacto',
+        'notas_adicionales',
         'estado',
         'peso',
         'puntos_ganados',
@@ -36,8 +41,10 @@ class Solicitud extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'peso' => 'decimal:2',
-        'puntos_ganados' => 'integer',
+        'peso'            => 'decimal:2',
+        'peso_aproximado' => 'decimal:2',
+        'fecha_preferida' => 'date',
+        'puntos_ganados'  => 'integer',
     ];
 
     /**

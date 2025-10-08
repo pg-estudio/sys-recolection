@@ -1,6 +1,6 @@
 <div class="p-6">
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold">{{ __('User Management') }}</h2>
+        <h2 class="text-xl font-semibold">{{ __('Administración de Usuarios') }}</h2>
     </div>
 
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">

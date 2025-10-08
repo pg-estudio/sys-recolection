@@ -19,6 +19,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->loadViewComponentsAs('', [
+            \App\View\Components\InputError::class,
+        ]);
+
+        $this->loadViewComponentsAs('flux', [
+            \App\View\Components\Flux\Input::class,
+            \App\View\Components\Flux\Label::class,
+        ]);
     }
 }

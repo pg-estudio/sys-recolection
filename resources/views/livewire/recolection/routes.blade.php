@@ -81,7 +81,7 @@
                                 @endif
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex items-center gap-2">
-                                        <flux:button wire:click="edit({{ $ruta->id }})" variant="secondary"
+                                        <flux:button wire:click="edit({{ $ruta->id }})" variant="outline"
                                             size="xs">
                                             Editar
                                         </flux:button>
@@ -154,7 +154,7 @@
 
         <x-slot name="footer">
             <div class="flex justify-end gap-4">
-                <flux:button wire:click="$set('showCreateModal', false)" variant="secondary">
+                <flux:button wire:click="$set('showCreateModal', false)" variant="outline">
                     {{ __('Cancelar') }}
                 </flux:button>
 
@@ -210,7 +210,7 @@
 
         <x-slot name="footer">
             <div class="flex justify-end gap-4">
-                <flux:button wire:click="$set('showEditModal', false)" variant="secondary">
+                <flux:button wire:click="$set('showEditModal', false)" variant="outline">
                     {{ __('Cancelar') }}
                 </flux:button>
 

@@ -118,7 +118,7 @@
 
         <x-slot name="footer">
             <div class="flex justify-end gap-4">
-                <flux:button wire:click="$set('showCanjearModal', false)" variant="secondary">
+                <flux:button wire:click="$set('showCanjearModal', false)" variant="outline">
                     {{ __('Cancelar') }}
                 </flux:button>
 
