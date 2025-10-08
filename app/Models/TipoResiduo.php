@@ -17,13 +17,6 @@ class TipoResiduo extends Model
     protected $table = 'tipos_residuos';
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<string>
@@ -32,6 +25,8 @@ class TipoResiduo extends Model
         'nombre',
         'descripcion',
         'frecuencia_recoleccion',
+        'puntos_por_kilo',
+        'color'
     ];
 
     /**

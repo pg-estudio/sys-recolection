@@ -13,9 +13,23 @@ use Laravel\Fortify\Features;
 
 Route::redirect('/', 'dashboard');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard', App\Livewire\Dashboard::class)->name('dashboard');
+    
+    // Rutas de recolección
+    Route::prefix('recolection')->name('recolection.')->group(function () {
+        Route::get('requests', App\Livewire\Recolection\Requests::class)->name('requests');
+        Route::get('routes', App\Livewire\Recolection\Routes::class)->name('routes');
+    });
+
+    // Rutas de recompensas
+    Route::get('rewards', App\Livewire\Rewards::class)->name('rewards');
+
+    // Rutas de administración
+    Route::prefix('admin')->group(function () {
+        Route::get('/users', App\Livewire\Admin\UserList::class)->name('admin.users');
+    });
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

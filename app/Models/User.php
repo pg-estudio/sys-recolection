@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +10,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     /**
@@ -53,6 +51,55 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if the user has a specific role.
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
+
+    /**
+     * Check if the user is a company.
+     *
+     * @return bool
+     */
+    public function isCompany(): bool
+    {
+        return $this->hasRole('company');
+    }
+
+    /**
+     * Check if the user is a regular user.
+     *
+     * @return bool
+     */
+    public function isUser(): bool
+    {
+        return $this->hasRole('user');
+    }
+
+    /**
+     * Get the user's empresa if they are a company.
+     */
+    public function empresa()
+    {
+        return $this->hasOne(Empresa::class);
+    }
+
+    /**
      * Get the solicitudes for the user.
      */
     public function solicitudes()
@@ -66,6 +113,14 @@ class User extends Authenticatable
     public function puntos()
     {
         return $this->hasOne(Punto::class);
+    }
+
+    /**
+     * Get the total points for the user
+     */
+    public function totalPuntos()
+    {
+        return $this->puntos ? $this->puntos->total : 0;
     }
 
     /**
@@ -94,5 +149,13 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    /**
+     * Get the user's name and role for display
+     */
+    public function getDisplayNameAttribute(): string
+    {
+        return "{$this->name} (" . ucfirst($this->role) . ")";
     }
 }

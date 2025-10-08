@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->text('descripcion')->nullable();
+            $table->integer('puntos_por_kilo')->default(0);
+            $table->string('color')->default('#000000');
             $table->string('frecuencia_recoleccion')->nullable();
+            $table->timestamps();
         });
     }
 
